@@ -2,27 +2,50 @@ FROM fedora:23
 
 ENV sqlite_version="3100200"
 
-RUN dnf install -y git \
-		   gcc \
-		   gcc-c++ \
-		   gcc-gfortran \
-		   make \
-		   wget \
-		   patch \
-		   root \
-		   root-physics \
-		   blas \
-		   blas-devel \
-		   lapack \
-		   lapack-devel \
-		   libX11-devel \
-		   python3-Cython \
-		   python3-devel \
-		   python3-numpy \
-		   python3-scipy \
-		   python3-matplotlib \
-		   rpm-build \
-		   tar
+
+RUN dnf install -y \
+            autoconf \
+            automake \
+            git \
+            gcc \
+            gcc-c++ \
+            gcc-gfortran \
+            libX11-devel \
+            make \
+            patch \
+            rpm-build \
+            tar \
+            wget \
+            which
+
+    RUN dnf install -y \
+            root \
+            root-physics
+
+    RUN dnf install -y \
+            blas \
+            blas-devel \
+            lapack \
+            lapack-devel
+
+    RUN dnf install -y \
+            texlive-tetex
+
+    RUN dnf install -y \
+            scipy \
+            python-Cython \
+            python-devel \
+            python-numpy \
+            python-matplotlib \
+            python-scipy \
+            python3-Cython \
+            python3-devel \
+            python3-numpy \
+            python3-matplotlib \
+            python3-scipy \
+            tkinter
+
+
 
 RUN wget https://www.sqlite.org/2016/sqlite-autoconf-${sqlite_version}.tar.gz -O /tmp/sqlite-autoconf-${sqlite_version}.tar.gz && \
     tar xvfz /tmp/sqlite-autoconf-${sqlite_version}.tar.gz -C /tmp

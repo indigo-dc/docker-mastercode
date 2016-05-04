@@ -36,7 +36,6 @@ RUN dnf install -y \
             python-Cython \
             python-devel \
             python-numpy \
-            python-matplotlib \
             python-scipy \
             python3-Cython \
             python3-devel \
@@ -45,6 +44,9 @@ RUN dnf install -y \
             python3-scipy \
             tkinter
 
+    RUN dnf install -y Cython
+
+    RUN dnf install --allowerasing -y python-matplotlib 
 
 
 RUN wget https://www.sqlite.org/2016/sqlite-autoconf-${sqlite_version}.tar.gz -O /tmp/sqlite-autoconf-${sqlite_version}.tar.gz && \

@@ -33,11 +33,7 @@ RUN dnf install -y \
 
     RUN dnf install -y \
             scipy \
-<<<<<<< HEAD
     	    python3-Cython \
-=======
-            python3-Cython \
->>>>>>> devel
             python3-devel \
             python3-numpy \
             python3-matplotlib \
